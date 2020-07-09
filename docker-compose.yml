@@ -19,6 +19,7 @@ x-default:
   environment:
     - WDB_SOCKET_SERVER=wdb
     - WDB_NO_BROWSER_AUTO_OPEN=True
+    - ODOO_HTTP_SOCKET_TIMEOUT=10
 
 services:
   dev:
