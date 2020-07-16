@@ -9,6 +9,8 @@ RUN pip3 install python-slugify
 RUN pip3 install websocket-client
 # WDB
 RUN pip3 install wdb
+#RUN pip3 install dateparser
+#RUN apt install build-essential python-dev python3-dev
 
 #RUN mkdir -p /mnt/extra-addons && chown -R odoo /mnt/extra-addons
 RUN apt-get update  \
