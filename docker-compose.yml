@@ -14,7 +14,11 @@ x-default:
     - odoo-web-data:/var/lib/odoo
     - ./config:/etc/odoo
 #    - ../pos-addons:/mnt/addons/pos-addons
-    - ../vendor/pos-addons:/mnt/addons/pos-addons
+    - ../gitlab/misc-addons:/mnt/addons/misc-addons
+    - ../website-addons:/mnt/addons/website-addons
+    - ../web:/mnt/addons/web
+    - ../access-addons:/mnt/addons/access-addons
+    - ../backend_theme:/mnt/addons/backend_theme
 #    - ../odoo12/odoo/addons:/mnt/addons/custom-addons
 #    - ../odoo12/odoo/odoo/addons/base:/usr/lib/python3/dist-packages/odoo/addons/base
 #    - ../odoo12/odoo/odoo/modules:/usr/lib/python3/dist-packages/odoo/modules
@@ -28,13 +32,13 @@ x-default:
 services:
   dev:
     <<: *default-odoo
-    command: ['-d', 'pos', '--init', 'pos_wechat_miniprogram', '--db-filter=.*', '--workers=0', '--test-enable']
+    command: ['-d', 'misc-2', '--init', '', '--db-filter=.*', '--workers=0']
 
   web:
     << : *default-odoo
     # TODO: unify parameter passing for different cases to avoid making different branches
     # '--db-filter=^%d$$' в этой записи если не экранировать $, то вызовет ошибку
-    command: ['-d', 'pos', '--init', 'pos_wechat_miniprogram', '--db-filter=.*', '--workers=2',]
+    command: ['-d', 'misc.11', '--init', '', '--db-filter=.*', '--workers=0',]
 #'--log-handler=odoo.models:DEBUG',
 #'--log-handler=odoo.addons.base.models.ir_cron:DEBUG',
 #'--log-handler=odoo.modules.registry:DEBUG',
